@@ -1,0 +1,17 @@
+one:
+  name:    website_one
+  dom_one: EFEFEF
+  dom_two: 333333
+  pop:     FFD900
+  sec_one: 00CCD6
+  sec_two: 424242
+
+
+two:
+  name:    website_two
+  dom_one: CCCCCC
+  dom_two: 466675
+  pop:     94FFFC 
+  sec_one: 6A8D9D
+  sec_two: FAC8BF
+
