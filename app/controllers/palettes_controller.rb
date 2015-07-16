@@ -2,50 +2,41 @@ class PalettesController < ApplicationController
 
   def index
     @palettes = Palette.all
-    respond_to do |format|
-      format.json { render json: @palettes }
+      render json: Palette.all
     end
   end
 
   def show
     @palette = get_palette
-    respond_to do |format|
-      format.json { render json: @palette }
+      render :get_palette
     end
-  end
 
   def create
     @palette = Palette.new(palette_params)
-    respond_to do |format|
       if @palette.save
-        format.json { render json: @palette, status: :created }
+        render status: :created 
       else
-        format.json { render json: @palette.errors, status: :unprocessable_entity }
+        render status: :unprocessable_entity
       end
     end
-  end
 
   def update
     @palette = get_palette
-    respond_to do |format|
-      if @palette.update_attributes(palette_params)
-        format.json { render json: @palette }
+      if @palette.update(palette_params)
+        head :no_content
       else
-        format.json { render json: @palette.errors, status: :unprocessable_entity }
+        render status: :unprocessable_entity
       end
     end
-  end
 
   def destroy
     @palette = get_palette
-    respond_to do |format|
       if @palette.destroy
-        format.json { redirect_to palettes_path, status: :destroyed }
+        head :no_content
       else
-        format.json { render json: @palette.errors, status: :unprocessable_entity }
+        render status: :unprocessable_entity 
       end
     end
-  end
 
   private
 
@@ -56,4 +47,3 @@ class PalettesController < ApplicationController
   def palette_params
     params.require(:palette).permit(:name, :dom_one, :dom_two, :sec_one, :sec_two, :pop)
   end
-end

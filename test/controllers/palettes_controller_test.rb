@@ -34,7 +34,7 @@ class PalettesControllerTest < ActionController::TestCase
   # create
   test 'POST creates with valid attributes' do 
     assert_difference('Palette.count', 1) do
-      post :create, palette: { name: 'test nameA', dom_one: 'test domA', dom_two: 'test dom2', sec_one: 'test sec1', sec_two: 'test sec2', pop: 'test pop' }, format: :json
+      post :created, palette: { name: 'test nameA', dom_one: 'test domA', dom_two: 'test dom2', sec_one: 'test sec1', sec_two: 'test sec2', pop: 'test pop' }, format: :json
       assert_response 201
     end
   end
@@ -69,7 +69,7 @@ class PalettesControllerTest < ActionController::TestCase
   # destroy
   test 'DELETE destroy does in fact destroy' do
     assert_difference('Palette.count', -1) do
-      delete :destroy, id: @palette.id, format: :json
+      delete :no_content, id: @palette.id, format: :json
     end
   end
 
